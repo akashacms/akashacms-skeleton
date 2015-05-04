@@ -4,10 +4,10 @@ layout: boot_page.html.ejs
 
 <h1><%
 	if (typeof documenttitle !== "undefined") {
-		%> documenttitle="<%= documenttitle %>" <%
+		%><%= documenttitle %><%
 	} else if (typeof title !== "undefined") {
-		%> title="<%= title %>" <%
-	} %>></h1>
+		%><%= title %><%
+	} %></h1>
 
 <div class="container" role="main">
 <div class="row">
