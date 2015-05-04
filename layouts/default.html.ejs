@@ -1,0 +1,27 @@
+---
+layout: boot_page.html.ejs
+---
+
+<h1><%
+	if (typeof documenttitle !== "undefined") {
+		%> documenttitle="<%= documenttitle %>" <%
+	} else if (typeof title !== "undefined") {
+		%> title="<%= title %>" <%
+	} %>></h1>
+
+<div class="container" role="main">
+<div class="row">
+<!--<section id="left" class="col-sm-1 clearleft">
+</section> -->
+<!-- include our document's content -->
+<article class="col-sm-10"><%- content %></article>
+<!-- <section id="right" class="col-sm-1 omega">
+right sidebar
+</section> -->
+</div>
+</div>
+
+
+<footer>
+<!-- footer -->
+</footer>
