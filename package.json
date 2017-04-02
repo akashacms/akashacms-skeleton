@@ -10,11 +10,28 @@
     "type": "git",
     "url": "git://github.com/akashacms/akashacms-skeleton.git"
   },
+  "scripts": {
+    "prebuild": "akasharender copy-assets config.js",
+    "build": "akasharender render config.js",
+    "deploy": "cd out && rsync --archive --delete --verbose ./ user-name@server-host.com:path-to-docroot/ ",
+    "preview": "cd out && ../node_modules/.bin/hostr",
+    "minify": "html-minifier --collapse-whitespace --conservative-collapse --html5 --keep-closing-slash --preserve-line-breaks --remove-comments --file-ext html  --input-dir out --output-dir out2",
+    "postminify": "globfs copy out2 out && rm -rf out2"
+  },
   "dependencies": {
-    "akashacms": "*",
-    "akashacms-theme-bootstrap": "*",
-    "akashacms-embeddables": "*",
-    "akashacms-booknav": "*",
-    "akashacms-base": "*"
+    "akashacms-base": "akashacms/akashacms-base#akasharender",
+    "akashacms-blog-podcast": "akashacms/akashacms-blog-podcast#akasharender",
+    "akashacms-booknav": "akashacms/akashacms-booknav#akasharender",
+    "akashacms-breadcrumbs": "akashacms/akashacms-breadcrumbs#akasharender",
+    "akashacms-embeddables": "akashacms/akashacms-embeddables#akasharender",
+    "akashacms-social-buttons": "akashacms/akashacms-social-buttons#akasharender",
+    "akashacms-tagged-content": "akashacms/akashacms-tagged-content#akasharender",
+    "akashacms-theme-bootstrap": "akashacms/akashacms-theme-bootstrap#akasharender",
+    "mahabhuta": ">=0.6.3",
+    "akasharender": ">=0.5.14",
+    "bootstrap": "^3.3.7",
+    "hostr": "^2.x",
+    "html-minifier": "^3.1.1",
+    "jquery": "^3.1.1"
   }
 }
