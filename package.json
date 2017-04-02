@@ -15,8 +15,7 @@
     "build": "akasharender render config.js",
     "deploy": "cd out && rsync --archive --delete --verbose ./ user-name@server-host.com:path-to-docroot/ ",
     "preview": "cd out && ../node_modules/.bin/hostr",
-    "minify": "html-minifier --collapse-whitespace --conservative-collapse --html5 --keep-closing-slash --preserve-line-breaks --remove-comments --file-ext html  --input-dir out --output-dir out2",
-    "postminify": "globfs copy out2 out && rm -rf out2"
+    "minify": "html-minifier --collapse-whitespace --conservative-collapse --html5 --keep-closing-slash --preserve-line-breaks --remove-comments --file-ext html  --input-dir out --output-dir out"
   },
   "dependencies": {
     "akashacms-base": "akashacms/akashacms-base#akasharender",
