@@ -1,14 +1,5 @@
 
-'use strict';
-
-const util    = require('util');
 const akasha  = require('akasharender');
-const async   = require('async');
-const cheerio = require('cheerio');
-const path    = require('path');
-
-const log    = require('debug')('akashacms-skeleton:configuration');
-const error  = require('debug')('akashacms-skeleton:error-configuration');
 
 const config = new akasha.Configuration();
 
@@ -30,14 +21,14 @@ config
     .addPartialsDir('partials');
 
 config
-    .use(require('akashacms-theme-bootstrap'))
-    .use(require('akashacms-base'))
-    .use(require('akashacms-breadcrumbs'))
-    .use(require('akashacms-booknav'))
-    .use(require('akashacms-embeddables'))
-    .use(require('akashacms-tagged-content'));
+    .use(require('@akashacms/theme-bootstrap'))
+    .use(require('@akashacms/plugins-base'))
+    .use(require('@akashacms/plugins-breadcrumbs'))
+    .use(require('@akashacms/plugins-booknav'))
+    .use(require('@akashacms/plugins-embeddables'))
+    .use(require('@akashacms/plugins-tagged-content'));
 
-config.plugin("akashacms-base").generateSitemap(config, true);
+config.plugin("@akashacms/plugins-base").generateSitemap(config, true);
 
 // Add any stylesheets or JavaScript here
 // The /vendor/jquery and /vendor/bootstrap files come from the corresponding
@@ -61,7 +52,7 @@ config.setMahabhutaConfig({
     decodeEntities: true
 });
 
-config.plugin("akashacms-tagged-content")
+config.plugin("@akashacms/plugins-tagged-content")
     .sortBy('title')
     .headerTemplate("---\ntitle: @title@\nlayout: tagpage.html.ejs\n---\n<p>Pages with tag @tagName@</p>")
     .tagsDirectory('/tags/');
