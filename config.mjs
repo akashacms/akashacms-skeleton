@@ -1,7 +1,16 @@
 
-const akasha  = require('akasharender');
+import akasha from 'akasharender';
+
+const __dirname = import.meta.dirname;
 
 const config = new akasha.Configuration();
+
+import { ThemeBootstrapPlugin } from '@akashacms/theme-bootstrap';
+import { BasePlugin } from '@akashacms/plugins-base';
+import { BreadcrumbsPlugin } from '@akashacms/plugins-breadcrumbs';
+import { BooknavPlugin } from '@akashacms/plugins-booknav';
+import { EmbeddablesPlugin } from '@akashacms/plugins-embeddables';
+import { TaggedContentPlugin } from '@akashacms/plugins-tagged-content';
 
 // Fill this with the URL of your site
 config.rootURL("https://skeleton.akashacms.com");
@@ -21,12 +30,12 @@ config
     .addPartialsDir('partials');
 
 config
-    .use(require('@akashacms/theme-bootstrap'))
-    .use(require('@akashacms/plugins-base'))
-    .use(require('@akashacms/plugins-breadcrumbs'))
-    .use(require('@akashacms/plugins-booknav'))
-    .use(require('@akashacms/plugins-embeddables'))
-    .use(require('@akashacms/plugins-tagged-content'));
+    .use(ThemeBootstrapPlugin)
+    .use(BasePlugin)
+    .use(BreadcrumbsPlugin)
+    .use(BooknavPlugin)
+    .use(EmbeddablesPlugin)
+    .use(TaggedContentPlugin);
 
 config.plugin("@akashacms/plugins-base").generateSitemap(config, true);
 
@@ -58,4 +67,5 @@ config.plugin("@akashacms/plugins-tagged-content")
     .tagsDirectory('/tags/');
 
 config.prepare();
-module.exports = config;
+
+export default config;
